@@ -1,0 +1,23 @@
+# Node modules
+node_modules/
+
+# Cypress specific folders
+cypress/screenshots/
+cypress/downloads/
+cypress/videos/
+
+# Log files
+*.log
+
+# Environment variables
+.env
+
+# macOS specific files
+.DS_Store
+
+# Build artifacts
+dist/
+coverage/
+
+# Ignore npm debug logs
+npm-debug.log*
