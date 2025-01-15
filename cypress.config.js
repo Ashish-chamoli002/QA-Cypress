@@ -1,12 +1,19 @@
-const { defineConfig } = require("cypress");
-
+const { defineConfig } = require('cypress');  
 module.exports = defineConfig({
   e2e: {
-    specPattern: 'cypress/features/**/*.cy.{js,jsx,ts,tsx}',
-    chromeWebSecurity: false,
-    setupNodeEvents(on, config) {
-      // implement node event listeners here
+    specPattern: 'cypress/features/*.cy.{js,jsx,ts,tsx}',
+    viewportWidth: 1280,
+    viewportHeight: 720,
+    video: true,
+    screenshotOnRunFailure: true,
+    reporter: 'mochawesome',
+    retries: {
+      runMode: 2,
+      openMode: 0
     },
-    baseUrl: 'https://opensource-demo.orangehrmlive.com/', 
+    env: {
+      apiUrl: 'https://opensource-demo.orangehrmlive.com/api',
+      defaultTimeout: 10000
+    }
   },
 });

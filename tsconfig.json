@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+      "target": "es5",
+      "lib": ["es5", "dom"],
+      "types": ["cypress", "node"],
+      "strict": true,
+      "baseUrl": "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
+      "paths": {
+      "@pages/*": ["cypress/support/pages/*"], // Example: Map @pages to the cypress/pages folder
+      "@features/*": ["cypress/features/*"] // Map @features to the cypress/features folder
+    }
+    },
+    "include": ["**/*.ts"]
+  }
