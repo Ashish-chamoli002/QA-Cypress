@@ -1,7 +1,8 @@
-const { defineConfig } = require('cypress');  
+import { defineConfig } from 'cypress';  
 module.exports = defineConfig({
   e2e: {
     specPattern: 'cypress/features/*.cy.{js,jsx,ts,tsx}',
+    baseUrl: 'https://opensource-demo.orangehrmlive.com/web/index.php/',
     viewportWidth: 1280,
     viewportHeight: 720,
     video: true,

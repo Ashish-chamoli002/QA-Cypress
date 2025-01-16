@@ -1,18 +1,19 @@
-class BasePage {
-    
-    
-    
-    
+export default class BasePage {
   
-    protected waitForPageLoad(): void {
+  
+  visit(): void {
+      cy.visit(`${Cypress.config('baseUrl')}`);
+    }
+
+    waitForPageLoad(): void {
       // Add page load verification
       cy.intercept('GET', '**/*').as('pageLoad');
       cy.wait('@pageLoad');
     }
   
-    validateUrl(): void {
-      cy.url().should('include', "");
+    validateUrl(path: string): void {
+      cy.url().should('include', path);
     }
 }
 
-export default BasePage
+//export default BasePage

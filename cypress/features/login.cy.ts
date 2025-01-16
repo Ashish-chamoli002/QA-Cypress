@@ -1,30 +1,41 @@
 
-import { page } from '@pages/login';
-//import { dashboard } from '../support/pages/dashboard';
+import { dashboardPage } from '../support/pages/dashboard';
+import { loginPage } from '../support/pages/login';
 
-describe('When user logins with invalid credentials', () => {  
-   
-  it('Should get error message', () => {
-    console.log('LoginPage instance:', page);
-    page.visit();    
-    //page.validateUrl();
-    page.login('testUser', 'securePassword123');
-    // page.login({
-    //   username: 'testUser',
-    //   password: 'securePassword123'
-    // });
-    page.alert()
-    .should('be.visible')
-    .and('contain.text', 'Invalid credentials');
+
+describe('User Authentication with invalid credentials', () => {
+  before(() => {
+      loginPage.visit();
+      loginPage.waitForPageLoad();
+  });
+  after(() => {
+      cy.clearLocalStorage();
+  });
+
+  it('should show error message ', () => {
+      loginPage.login({
+          username: 'testUser',
+          password: 'securePassword123'
+      });
+      
+      loginPage.alert()
+          .should('be.visible')
+          .and('contain.text', 'Invalid credentials');
   });
 });
 
-// describe('When user logins with valid credentials', () => {
-//   it('Should login successfully', () => {
-//     login.visit();
-//     login.username('Admin');
-//     login.password('admin123');
-//     login.submit();
-//     dashboard.validateDashboardLoaded();
-//   });
-// });
+describe('User Authenticationwith valid credentials', () => {
+    before(() => {
+        loginPage.visit();
+    });
+
+
+    it('should login successfully ', () => {
+        loginPage.login({
+            username: 'Admin',
+            password: 'admin123'
+        });
+        
+        dashboardPage.validateDashboardLoaded();
+    });
+});
